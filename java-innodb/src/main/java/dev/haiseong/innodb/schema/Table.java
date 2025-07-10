@@ -15,4 +15,16 @@ public class Table {
         this.rowFormat = rowFormat;
         this.columns = columns;
     }
+
+    public List<Column> getNullableColumns() {
+        return columns.stream()
+                .filter(Column::isNullable)
+                .toList();
+    }
+
+    public List<Column> getVariableLengthColumns() {
+        return columns.stream()
+                .filter(Column::isVariableLength)
+                .toList();
+    }
 }
