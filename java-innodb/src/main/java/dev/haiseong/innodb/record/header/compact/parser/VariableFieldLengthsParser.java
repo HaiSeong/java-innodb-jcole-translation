@@ -12,12 +12,12 @@ public class VariableFieldLengthsParser {
         this.variableFieldLengthParser = variableFieldLengthParser;
     }
 
-    public VariableFieldLengths parse(ByteCursor cursor, int lengthsCount) {
+    public VariableFieldLengths parse(ByteCursor cursor, int variableFieldLengthsCount) {
         cursor.setDirection(ByteCursor.ReadDirection.BACKWARD);
 
-        VariableFieldLength[] lengths = new VariableFieldLength[lengthsCount];
+        VariableFieldLength[] lengths = new VariableFieldLength[variableFieldLengthsCount];
 
-        for (int i = 0; i < lengthsCount; i++) {
+        for (int i = 0; i < variableFieldLengthsCount; i++) {
             lengths[i] = variableFieldLengthParser.parse(cursor);
         }
 

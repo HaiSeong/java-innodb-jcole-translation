@@ -80,11 +80,13 @@ class VariableFieldLengthsParserTest {
     @DisplayName("variable field lengths를 올바르게 파싱한다")
     @ParameterizedTest(name = "{0}")
     @MethodSource("variableFieldLengthsTestCases")
-    void parseVariableFieldLengths(String testName, int lengthsCount, byte[] data,
+    void parseVariableFieldLengths(String testName,
+                                   int variableFieldLengthsCount,
+                                   byte[] data,
                                    VariableFieldLength[] expectedLengths) {
         ByteCursor cursor = new ByteCursor(data, data.length);
 
-        VariableFieldLengths actual = parser.parse(cursor, lengthsCount);
+        VariableFieldLengths actual = parser.parse(cursor, variableFieldLengthsCount);
 
         assertAll(
                 () -> assertThat(actual.getLengths()).hasSize(expectedLengths.length),
@@ -92,8 +94,8 @@ class VariableFieldLengthsParserTest {
                     for (int i = 0; i < expectedLengths.length; i++) {
                         int index = i;
                         assertAll(
-                                () -> assertThat(actual.getLengths()[index].getLength())
-                                        .isEqualTo(expectedLengths[index].getLength()),
+                                () -> assertThat(actual.getLengths()[index].getLength()).isEqualTo(
+                                        expectedLengths[index].getLength()),
                                 () -> assertThat(actual.getLengths()[index].isStoredExternally())
                                         .isEqualTo(expectedLengths[index].isStoredExternally())
                         );
