@@ -1,5 +1,6 @@
 package dev.haiseong.innodb.record.header.compact.parser;
 
+import dev.haiseong.innodb.record.header.RecordHeaderParser;
 import dev.haiseong.innodb.record.header.compact.CompactRecordHeader;
 import dev.haiseong.innodb.record.header.compact.FixedHeader;
 import dev.haiseong.innodb.record.header.compact.NullableBitmap;
@@ -10,7 +11,7 @@ import dev.haiseong.innodb.util.ByteCursor;
 import dev.haiseong.innodb.util.ByteCursor.ReadDirection;
 import java.util.List;
 
-public class CompactRecordHeaderParser {
+public class CompactRecordHeaderParser implements RecordHeaderParser {
 
     private final FixedHeaderParser fixedHeaderParser;
     private final NullableBitmapParser nullableBitmapParser;

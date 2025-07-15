@@ -1,5 +1,6 @@
 package dev.haiseong.innodb.record.header.compact;
 
+import dev.haiseong.innodb.record.header.RecordHeader;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -24,7 +25,7 @@ import lombok.ToString;
  */
 @Getter
 @ToString
-public class CompactRecordHeader {
+public class CompactRecordHeader implements RecordHeader {
 
     private final FixedHeader fixedHeader;
     private final NullableBitmap nullableBitmap;
